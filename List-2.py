@@ -59,7 +59,7 @@ def centered_average(nums):
 def centered_average(nums):
     return (sum(nums) - max(nums) - min(nums)) / (len(nums) - 2)
 
-#%% 4.  sum13
+#%% 4.  sum13:the hard version of this question is Logic -2 lucky_sum
 """
 Return the sum of the numbers in the array, returning 0 for an empty array. Except the number 13 is very unlucky, so it does not count and numbers that come immediately after a 13 also do not count.
 
@@ -76,6 +76,22 @@ def sum13(nums):
       nums[i]=0
       if i+1 < len(nums): # note the indent
         nums[i+1]=0       # note the indent
+  return sum(nums)
+
+# enhanced version works for both List -2 sum13 and Logic -2 lucky_sum
+def sum13(nums): 
+  if len(nums) == 0:
+    return 0
+    
+  for i in range(len(nums)-1): #0,1
+    if nums[i]==13 and nums[i+1]==13:
+      nums[i]=0
+    elif nums[i]==13 and nums[i+1] != 13:
+      nums[i]=0
+      #if i+1 < len(nums): # note the indent
+      nums[i+1]=0       # note the indent
+  if nums[-1] == 13:
+    nums[-1] = 0
   return sum(nums)
 
 # or while loop
